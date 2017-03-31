@@ -50,3 +50,45 @@ end
 # q.enqueue("customer3")
 # q.dequeue
 # p q.show
+
+class Map
+  def initialize
+    @map = []
+  end
+
+  def assign(key, value)
+    @map.each do |pair|
+      if pair[0] == key
+        pair[1] = value
+        return
+      end
+    end
+    @map << [key, value]
+  end
+
+  def lookup(key)
+    @map.each { |pair| return pair[1] if pair[0] == key }
+    "Key not found"
+  end
+
+  def remove(key)
+    @map.reject! { |pair| pair[0] == key }
+  end
+
+  def show
+    @map
+  end
+
+end
+
+# m = Map.new
+# m.assign("donkey", "an animal")
+# # p m.show
+# m.assign("computer", "machine to process data")
+# # p m.show
+# m.assign("donkey", "horse")
+# # p m.show
+# # p m.lookup("computer")
+# # p m.lookup("monitor")
+# m.remove("donkey")
+# p m.show
